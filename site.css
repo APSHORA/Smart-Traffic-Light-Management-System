@@ -1,0 +1,227 @@
+﻿/* ===============================
+   🌿 SEA GREEN + OLIVE DARK THEME
+   =============================== */
+
+body {
+    background: radial-gradient(circle at top, #03130e, #000000);
+    color: #e6f7f4;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* ===============================
+   ✅ MAIN TITLE
+   =============================== */
+.main-title {
+    text-align: center;
+    margin: 20px auto;
+    font-size: 2.3rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: #39d98a;
+    text-shadow: 0 0 15px rgba(57, 217, 138, 0.4);
+}
+
+/* ===============================
+   ✅ STATS PANEL
+   =============================== */
+.stats-panel {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 14px 18px;
+    margin: 18px auto;
+    max-width: 950px;
+    border-radius: 14px;
+    background: rgba(57, 217, 138, 0.15);
+    border: 1px solid rgba(57, 217, 138, 0.28);
+    box-shadow: 0 0 20px rgba(57, 217, 138, 0.12);
+    font-weight: bold;
+}
+
+/* ===============================
+   ✅ CENTER BOX (BUTTON/FORM)
+   =============================== */
+.center-box {
+    text-align: center;
+    margin: 18px auto;
+}
+
+/* Dropdown */
+.road-select {
+    width: 290px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(57, 217, 138, 0.3);
+    color: #cfffef;
+}
+
+/* Search input */
+.search-input {
+    width: 290px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(57, 217, 138, 0.3);
+    color: #cfffef;
+}
+
+/* ===============================
+   ✅ MAP SECTION
+   =============================== */
+.map-section {
+    text-align: center;
+    margin: 35px auto;
+}
+
+    .map-section h3 {
+        color: #a6ff4d;
+        font-weight: 800;
+        margin-bottom: 15px;
+        text-shadow: 0 0 10px rgba(166,255,77,0.35);
+    }
+
+.map-box {
+    width: 90%;
+    margin: auto;
+    border-radius: 18px;
+    overflow: hidden;
+    border: 2px solid rgba(166,255,77,0.2);
+    box-shadow: 0 0 30px rgba(57, 217, 138, 0.25);
+}
+
+/* ===============================
+   ✅ DASHBOARD LAYOUT (CARDS)
+   =============================== */
+.map-dashboard {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    padding: 40px;
+    border-radius: 22px;
+    background: linear-gradient(135deg, rgba(57,217,138,0.10), rgba(0,0,0,0.85));
+    background-image: linear-gradient(rgba(57,217,138,0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(57,217,138,0.06) 1px, transparent 1px);
+    background-size: 70px 70px;
+    box-shadow: inset 0 0 50px rgba(57,217,138,0.15);
+}
+
+/* ===============================
+   🚦 SIGNAL BOX
+   =============================== */
+.signal-box {
+    width: 270px;
+    padding: 22px 18px;
+    border-radius: 18px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.78);
+    border: 1px solid rgba(57, 217, 138, 0.30);
+    box-shadow: 0 0 25px rgba(57, 217, 138, 0.12);
+    transition: 0.35s ease;
+}
+
+    .signal-box:hover {
+        transform: translateY(-6px);
+        border-color: rgba(166,255,77,0.45);
+        box-shadow: 0 0 40px rgba(166,255,77,0.25);
+    }
+
+    /* Title */
+    .signal-box h4 {
+        color: #39d98a;
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+
+/* ===============================
+   ✅ TRAFFIC LIGHT CIRCLE
+   =============================== */
+.light-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin: 12px auto;
+    background: gray;
+    box-shadow: 0 0 18px rgba(57, 217, 138, 0.15);
+}
+
+    .light-circle.red {
+        background: radial-gradient(circle, #ff3c3c, #4d0000);
+        box-shadow: 0 0 18px rgba(255,60,60,0.65);
+    }
+
+    .light-circle.yellow {
+        background: radial-gradient(circle, #ffe14d, #5c4a00);
+        box-shadow: 0 0 18px rgba(255,225,77,0.55);
+    }
+
+    .light-circle.green {
+        background: radial-gradient(circle, #39d98a, #003b20);
+        box-shadow: 0 0 18px rgba(57,217,138,0.55);
+    }
+
+/* ===============================
+   ✅ BUTTONS
+   =============================== */
+.btn {
+    border-radius: 12px;
+    font-weight: 700;
+    margin-top: 7px;
+    border: none;
+}
+
+/* Add button */
+.btn-primary {
+    background: linear-gradient(135deg, #39d98a, #2f9c6a);
+    box-shadow: 0 0 18px rgba(57,217,138,0.35);
+}
+
+/* Traffic status button */
+.btn-info {
+    background: linear-gradient(135deg, #a6ff4d, #4bbf2a);
+    color: black;
+    box-shadow: 0 0 18px rgba(166,255,77,0.35);
+}
+
+/* State buttons */
+.btn-success {
+    background: linear-gradient(135deg, #39d98a, #1f7a52);
+}
+
+.btn-warning {
+    background: linear-gradient(135deg, #ffe14d, #b38b00);
+    color: black;
+}
+
+.btn-danger {
+    background: linear-gradient(135deg, #ff3c3c, #a30000);
+}
+
+.btn-secondary {
+    background: linear-gradient(135deg, #2f9c6a, #39d98a);
+}
+
+/* Remove */
+.btn-outline-danger {
+    background: transparent;
+    border: 1px solid #ff3c3c;
+    color: #ff6b6b;
+}
+
+/* ===============================
+   ✅ ALERTS
+   =============================== */
+.alert {
+    border-radius: 14px;
+    font-weight: 600;
+    border: 1px solid rgba(57,217,138,0.25);
+    background: rgba(0, 0, 0, 0.75);
+    color: #dffdf3;
+    box-shadow: 0 0 15px rgba(57,217,138,0.10);
+}
+
+/* ===============================
+   ✅ HIDE FOOTER IF NEEDED
+   =============================== */
+footer {
+    display: none;
+}

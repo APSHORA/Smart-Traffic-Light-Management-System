@@ -1,0 +1,32 @@
+﻿@model TrafficLightManagement.Models.TrafficLight
+
+<h2 style="text-align:center; color:cyan;">➕ Add New Traffic Light</h2>
+
+<form asp-action="Add" method="post" style="width:400px; margin:0 auto;">
+
+    <label>Location</label>
+    <input asp-for="Location" class="form-control" required />
+
+    <label class="mt-2">Initial State</label>
+    <select asp-for="CurrentState" class="form-control">
+        <option>Red</option>
+        <option>Yellow</option>
+        <option>Green</option>
+    </select>
+
+    <label class="mt-2">Traffic Density</label>
+    <input asp-for="TrafficDensity" class="form-control" type="number" min="0" max="100" required />
+
+    <label class="mt-2">Last Maintenance Date</label>
+    <input asp-for="LastMaintenanceDate" class="form-control" type="date" required />
+
+    <label class="mt-3">
+        <input asp-for="HasPedestrianButton" />
+        Pedestrian Button
+    </label>
+
+    <br /><br />
+
+    <button class="btn btn-success w-100">✅ Add</button>
+    <a href="/TrafficLight/Dashboard" class="btn btn-secondary w-100 mt-2">⬅ Back</a>
+</form>

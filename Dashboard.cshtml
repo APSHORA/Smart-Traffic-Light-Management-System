@@ -1,0 +1,116 @@
+﻿@using TrafficLightManagement.Controllers
+@model List<TrafficLightManagement.Models.TrafficLight>
+
+<h2 class="main-title">🚦 Smart Map Dashboard</h2>
+
+<div class="center-box">
+    <a class="btn btn-primary btn-lg" href="/TrafficLight/Add">➕ Add More Place</a>
+</div>
+
+<div class="stats-panel">
+    <span>Total: @ViewBag.Total</span>
+    <span>Green: @ViewBag.GreenCount</span>
+    <span>Red: @ViewBag.RedCount</span>
+    <span>Yellow: @ViewBag.YellowCount</span>
+    <span>Congested: @ViewBag.CongestedCount</span>
+</div>
+
+<!-- ✅ Road Status -->
+<div class="center-box">
+    <form asp-action="CheckRoadStatus" method="get">
+        <select name="location" class="form-select road-select">
+            <option disabled selected>🚗 Select Road to Go</option>
+            @foreach (var light in Model)
+            {
+                <option value="@light.Location">@light.Location</option>
+            }
+        </select>
+        <button class="btn btn-info mt-2">Check Traffic Status</button>
+    </form>
+</div>
+
+<!-- ✅ Notifications -->
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success text-center">@TempData["Message"]</div>
+}
+@if (TempData["RoadStatus"] != null)
+{
+    <div class="alert alert-primary text-center">@TempData["RoadStatus"]</div>
+}
+@if (TempData["EmergencyAlert"] != null)
+{
+    <div class="alert alert-danger text-center">@TempData["EmergencyAlert"]</div>
+}
+@if (TempData["MaintenanceSuccess"] != null)
+{
+    <div class="alert alert-success text-center">@TempData["MaintenanceSuccess"]</div>
+}
+@if (TempData["PedestrianAlert"] != null)
+{
+    <div class="alert alert-info text-center">@TempData["PedestrianAlert"]</div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger text-center">@TempData["Error"]</div>
+}
+
+@if (ViewBag.Notification != null)
+{
+    foreach (string msg in ViewBag.Notification)
+    {
+        <div class="alert alert-warning text-center">@msg</div>
+    }
+}
+
+<!-- ✅ Map -->
+<div class="map-section">
+    <h3>🗺️ Live City Map View</h3>
+    <div class="map-box">
+        <iframe width="100%" height="420" style="border:0;"
+                loading="lazy"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=90.30%2C23.70%2C90.50%2C23.85&layer=mapnik"></iframe>
+    </div>
+</div>
+
+<!-- ✅ Cards -->
+<div class="map-dashboard">
+    @foreach (var light in Model)
+    {
+        <div class="signal-box">
+            <h4>📍 @light.Location</h4>
+
+            <div class="light-circle @light.CurrentState.ToLower()"></div>
+
+            <p><b>State:</b> @light.CurrentState</p>
+            <p><b>Traffic:</b> @light.TrafficDensity%</p>
+            <p><b>Maintenance:</b> @light.LastMaintenanceDate.ToShortDateString()</p>
+
+            <a class="btn btn-success" href="/TrafficLight/ChangeState?id=@light.LightID&newState=Green">Green</a>
+            <a class="btn btn-warning" href="/TrafficLight/ChangeState?id=@light.LightID&newState=Yellow">Yellow</a>
+            <a class="btn btn-danger" href="/TrafficLight/ChangeState?id=@light.LightID&newState=Red">Red</a>
+
+            <a class="btn btn-danger w-100 mt-2" href="/Emergency/ActivateEmergency?id=@light.LightID">🚑 Emergency</a>
+
+            @if (light.HasPedestrianButton)
+            {
+                <a class="btn btn-secondary w-100 mt-2" href="/TrafficLight/PedestrianRequest?id=@light.LightID">🚶 Pedestrian</a>
+            }
+
+            <a class="btn btn-warning w-100 mt-2" href="/TrafficLight/DoMaintenance?id=@light.LightID">🔧 Maintenance Done</a>
+            <a class="btn btn-outline-danger w-100 mt-2" href="/TrafficLight/Delete?id=@light.LightID">❌ Remove</a>
+        </div>
+    }
+</div>
+
+<!-- ✅ Audit Log -->
+@if (TrafficLightController.auditLog.Any())
+{
+    <div class="alert alert-dark mt-4">
+        <h5>📜 Recent Activity Log</h5>
+        @foreach (var log in TrafficLightController.auditLog.TakeLast(8))
+        {
+            <div>@log</div>
+        }
+    </div>
+}
